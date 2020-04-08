@@ -4,8 +4,8 @@ import cv2
 import numpy as np
 
 def onMouse(action, x, y, flags, userdata):
-    image = userdata[0]
-    hsv_image = userdata[1]
+    image = userdata[0];            bgr = ['B','G', 'R']
+    hsv_image = userdata[1];        hsv = ['H','S', 'V']
 
     # Action to be taken when left mouse button is pressed
     if action == cv2.EVENT_LBUTTONDOWN:

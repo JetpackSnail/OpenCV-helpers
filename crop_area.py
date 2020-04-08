@@ -1,6 +1,6 @@
 # crops an area, shows average color and histogram
 import cv2
-import numpy as np
+from matplotlib import pyplot as plt
 
 points = [0,0]
 crop = False
@@ -37,6 +37,16 @@ def onMouse(action, x, y, flags, userdata):
         cv2.imshow('cropped', cropped)
 
         print('The corner coordinates are {} and {}'.format(points[0], points[1]))
+
+        # histogram of cropped region
+        bgr = ('b', 'g', 'r')
+        for idx, col in enumerate(bgr):
+            hist = cv2.calcHist([cropped],[idx],None,[256],[0,256])
+            plt.plot(hist,color = col)
+            plt.xlim([0,256])
+        plt.show()
+
+
 
 def main():
     img = cv2.imread('image.jpg')
